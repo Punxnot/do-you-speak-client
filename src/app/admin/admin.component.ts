@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-admin',
