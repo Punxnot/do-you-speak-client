@@ -11,8 +11,6 @@ import { environment } from './../../environments/environment';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  isLoggedIn;
-  currentUser;
   userEmail: string;
   userPassword: string;
 
@@ -32,27 +30,26 @@ export class LogInComponent implements OnInit {
       .set('email', this.userEmail)
       .set('password', this.userPassword);
 
-    this.http.post(`${environment.apiUrl}/auth/sign_in`, params, { observe: 'response' })
+    this.http.post(`${environment.apiUrl}/authenticate`, params, { observe: 'response' })
       .subscribe(res => {
-        if (res && res["body"]) {
-          this.currentUser = res["body"]["data"];
-          this.storeUserData(res["headers"], res["body"]["data"]["is_admin"]);
-          this.isLoggedIn = true;
-          this.router.navigate(['/']);
-        }
+        console.log(res);
+        this.storeUserData(res);
       })
 
     return;
   }
 
   // TODO: Use mixin
-  storeUserData(responseHeaders, isAdmin) {
-    const token = responseHeaders.get("access-token");
-    const client = responseHeaders.get("client");
-    const uid = responseHeaders.get("uid");
+  storeUserData(response) {
+    console.log(response);
+    const token = response.body.auth_token;
     sessionStorage.setItem('token', token);
-    sessionStorage.setItem('client', client);
-    sessionStorage.setItem('uid', uid);
-    sessionStorage.setItem('isAdmin', isAdmin);
+    // const token = responseHeaders.get("access-token");
+    // const client = responseHeaders.get("client");
+    // const uid = responseHeaders.get("uid");
+    // sessionStorage.setItem('token', token);
+    // sessionStorage.setItem('client', client);
+    // sessionStorage.setItem('uid', uid);
+    // sessionStorage.setItem('isAdmin', isAdmin);
   }
 }

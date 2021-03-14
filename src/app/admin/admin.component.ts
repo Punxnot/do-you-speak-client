@@ -13,48 +13,42 @@ import * as moment from 'moment';
 })
 
 export class AdminComponent implements OnInit {
-  eventStartDate;
-  eventEndDate;
-  eventTitle;
-  eventDescription;
+  textTitle;
+  textBody;
+  textAuthor;
+  textAudio;
+  textLevel = 1;
+  textDuration;
   isFlashShown = false;
-  allRecords;
 
   constructor(private http: HttpClient,
               private router: Router) { }
 
   ngOnInit() {
-    console.log(sessionStorage.getItem("isAdmin"));
-    if (!(sessionStorage.getItem("token") && sessionStorage.getItem("isAdmin"))) {
+    // console.log(sessionStorage.getItem("token"));
+    const token = sessionStorage.getItem("token");
+    if (!token) {
       this.router.navigate(['/']);
     } else {
-      this.http.get(`${environment.apiUrl}/get_all_records`)
-        .subscribe(res => {
-          this.allRecords = res;
-        })
+      console.log("Registered user");
     }
   }
 
   onSubmit() {
-    const date1 = moment(this.eventStartDate, "DD/MM/YYYY");
-    const date2 = moment(this.eventEndDate, "DD/MM/YYYY");
-    const differenceInDays = date2.diff(date1, 'days');
-
     const data = {
-      "days": differenceInDays,
-      "event": {
-        "title": this.eventTitle,
-        "description": this.eventDescription
+      "text": {
+        "title": this.textTitle,
+        "text": this.textBody,
+        "author": this.textAuthor,
+        "audio": this.textAudio,
+        "level": this.textLevel,
+        "duration": this.textDuration
       }
     };
 
-    this.http.post(`${environment.apiUrl}/create/event`, data)
+    this.http.post(`${environment.apiUrl}/api/create-text`, data)
       .subscribe(res => {
-        this.allRecords = res;
-        // this.eventStartDate = null;
-        this.eventEndDate = null;
-        // this.eventTitle = null;
-        this.eventDescription = null;
+        console.log(res);
         this.isFlashShown = true;
         setTimeout(() => {
           this.isFlashShown = false;
