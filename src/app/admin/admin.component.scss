@@ -1,0 +1,38 @@
+@import '../../assets/variables';
+
+.admin-form {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    resize: vertical;
+    margin-bottom: 20px;
+  }
+}
+
+.all-records {
+  margin: 20px 0;
+  padding: 0 20px;
+
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+.record-days {
+  font-family: "Amatic SC", cursive;
+  font-size: 24px;
+  color: $contrast-secondary;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

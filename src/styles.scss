@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+// @import url(//fonts.googleapis.com/css?family=Vibur);
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import './assets/variables';
+
+body,
+h1, h2, h3, h4, h5,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  background: $background-main;
+  color: $white;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date] {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  padding-left: 10px;
+  border: 1px solid $contrast-primary;
+  border-radius: 4px;
+  background: transparent;
+  color: $grey-light;
+  outline: none;
+  font-size: 14px;
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid $contrast-primary;
+  border-radius: 4px;
+  background: transparent;
+  color: $grey-light;
+  outline: none;
+  font-size: 14px;
+}
+
+.btn {
+  background-color: transparent;
+  color: $contrast-primary;
+  border: 1px solid $contrast-primary;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 30px;
+  font-size: 14px;
+  padding: 0 10px;
+
+  &:hover {
+    background-color: $contrast-primary-hover;
+  }
+
+  &.warning {
+    color: $red;
+    border: 1px solid $red;
+  }
+
+  & + .btn {
+    margin-left: 20px;
+  }
+}
+
+.flash {
+  margin-top: 20px;
+  color: $contrast-secondary;
+  display: none;
+
+  &.shown {
+    display: block;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.loader {
+  border: 2px solid $grey-light;
+  border-top: 2px solid $contrast-primary;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

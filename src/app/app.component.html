@@ -1,0 +1,13 @@
+<div class="page-container">
+  <div class="content" *ngIf="!loading">
+    <header class="flex-container">
+      <a routerLink="/" class="logo">
+        {{title}}
+      </a>
+    </header>
+  </div>
+
+  <span class="content" *ngIf="loading">Loading...</span>
+
+  <router-outlet></router-outlet>
+</div>
