@@ -1,3 +1,19 @@
-<div>{{text.title}}</div>
-<div>{{text.author}}</div>
-<div>{{text.text}}</div>
+<div>{{textTitle}}</div>
+<div>{{textAuthor}}</div>
+<div>{{textText}}</div>
+
+<audio controls *ngIf="textAudio">
+  <source [src]="textAudio" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<div>
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div>
+      <input type="file" name="profile" (change)="onFileSelect($event)" />
+    </div>
+    <div>
+      <button type="submit">Upload</button>
+    </div>
+  </form>
+</div>

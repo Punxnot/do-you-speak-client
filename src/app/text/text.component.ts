@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
@@ -12,25 +12,57 @@ import { environment } from './../../environments/environment';
 })
 
 export class TextComponent implements OnInit {
-  text;
+  textTitle;
+  textAuthor;
+  textText;
+  textAudio;
+  uploadForm: FormGroup;
 
   constructor(private route:ActivatedRoute,
-              private http: HttpClient,
-              private router: Router) {}
+              private httpClient: HttpClient,
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.getText(id);
+
+    // If admin
+    this.uploadForm = this.formBuilder.group({
+      profile: ['']
+    });
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('profile').setValue(file);
+    }
+  }
+
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('audio_file', this.uploadForm.get('profile').value);
+
+    const textId = this.route.snapshot.paramMap.get('id');
+    formData.append('text_id', textId);
+
+    this.httpClient.post<any>(`${environment.apiUrl}/api/add-audio`, formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
 
   getText(id) {
-    this.http.get(`${environment.apiUrl}/api/texts/${id}`)
+    this.httpClient.get(`${environment.apiUrl}/api/texts/${id}`)
       .subscribe(res => {
-        console.log(res);
-        this.text = res;
+        this.textTitle = res.title;
+        this.textAuthor = res.author;
+        this.textText = res.text;
+        if (res.audio_url) {
+          console.log(res.audio_url);
+          this.textAudio = `${environment.apiUrl}${res.audio_url}`;
+        }
       })
   }
 }
-
-// texts/:id

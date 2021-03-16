@@ -32,7 +32,6 @@ export class LogInComponent implements OnInit {
 
     this.http.post(`${environment.apiUrl}/authenticate`, params, { observe: 'response' })
       .subscribe(res => {
-        console.log(res);
         this.storeUserData(res);
       })
 
@@ -41,7 +40,6 @@ export class LogInComponent implements OnInit {
 
   // TODO: Use mixin
   storeUserData(response) {
-    console.log(response);
     const token = response.body.auth_token;
     sessionStorage.setItem('token', token);
     // const token = responseHeaders.get("access-token");

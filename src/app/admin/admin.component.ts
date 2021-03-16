@@ -47,7 +47,6 @@ export class AdminComponent implements OnInit {
 
     this.http.post(`${environment.apiUrl}/api/create-text`, data)
       .subscribe(res => {
-        console.log(res);
         this.isFlashShown = true;
         setTimeout(() => {
           this.isFlashShown = false;
