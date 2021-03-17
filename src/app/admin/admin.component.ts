@@ -15,23 +15,34 @@ export class AdminComponent implements OnInit {
   textTitle;
   textBody;
   textAuthor;
-  textAudio;
   textLevel = 1;
   textDuration;
-  isFlashShown = false;
 
   constructor(private http: HttpClient,
               private router: Router) { }
 
   ngOnInit() {
-    // console.log(sessionStorage.getItem("token"));
     const token = sessionStorage.getItem("token");
     if (!token) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/log-in']);
     } else {
       console.log("Registered user");
     }
   }
+
+  // const headers = new HttpHeaders({
+  //     'access-token': sessionStorage.getItem("token"),
+  //     'client': sessionStorage.getItem("client"),
+  //     'uid': sessionStorage.getItem("uid")
+  //   });
+  //
+  //   this.http.delete(`${environment.apiUrl}/auth/sign_out`, {headers: headers})
+  //     .subscribe(res => {
+  //       sessionStorage.removeItem("token");
+  //       sessionStorage.removeItem("client");
+  //       sessionStorage.removeItem("uid");
+  //       sessionStorage.removeItem("isAdmin");
+  //     });
 
   onSubmit() {
     const data = {
@@ -39,18 +50,18 @@ export class AdminComponent implements OnInit {
         "title": this.textTitle,
         "text": this.textBody,
         "author": this.textAuthor,
-        "audio": this.textAudio,
         "level": this.textLevel,
         "duration": this.textDuration
       }
     };
 
-    this.http.post(`${environment.apiUrl}/api/create-text`, data)
+    const headers = new HttpHeaders({
+      'access-token': sessionStorage.getItem("token")
+    });
+
+    this.http.post(`${environment.apiUrl}/api/create-text`, data, {headers: headers})
       .subscribe(res => {
-        this.isFlashShown = true;
-        setTimeout(() => {
-          this.isFlashShown = false;
-        }, 3000);
+        this.router.navigate([`/texts/${res['id']}`]);
       })
   }
 }

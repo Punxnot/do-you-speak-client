@@ -3,9 +3,11 @@
 .admin-form {
   width: 400px;
   margin: 0 auto;
-  text-align: center;
 
-  input {
+  input,
+  select,
+  textarea {
+    margin-top: 10px;
     margin-bottom: 20px;
   }
 
@@ -13,7 +15,6 @@
     display: block;
     width: 100%;
     resize: vertical;
-    margin-bottom: 20px;
   }
 }
 

@@ -21,7 +21,7 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
     if (!!sessionStorage.getItem("token")) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/admin']);
     }
   }
 
@@ -33,6 +33,8 @@ export class LogInComponent implements OnInit {
     this.http.post(`${environment.apiUrl}/authenticate`, params, { observe: 'response' })
       .subscribe(res => {
         this.storeUserData(res);
+        console.log("Logged in successfully!");
+        this.router.navigate(['/admin']);
       })
 
     return;

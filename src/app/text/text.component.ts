@@ -56,12 +56,12 @@ export class TextComponent implements OnInit {
   getText(id) {
     this.httpClient.get(`${environment.apiUrl}/api/texts/${id}`)
       .subscribe(res => {
-        this.textTitle = res.title;
-        this.textAuthor = res.author;
-        this.textText = res.text;
-        if (res.audio_url) {
-          console.log(res.audio_url);
-          this.textAudio = `${environment.apiUrl}${res.audio_url}`;
+        this.textTitle = res['title'];
+        this.textAuthor = res['author'];
+        this.textText = res['text'];
+        if (res['audio_url']) {
+          console.log(res['audio_url']);
+          this.textAudio = `${environment.apiUrl}${res['audio_url']}`;
         }
       })
   }
