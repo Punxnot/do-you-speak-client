@@ -30,20 +30,6 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // const headers = new HttpHeaders({
-  //     'access-token': sessionStorage.getItem("token"),
-  //     'client': sessionStorage.getItem("client"),
-  //     'uid': sessionStorage.getItem("uid")
-  //   });
-  //
-  //   this.http.delete(`${environment.apiUrl}/auth/sign_out`, {headers: headers})
-  //     .subscribe(res => {
-  //       sessionStorage.removeItem("token");
-  //       sessionStorage.removeItem("client");
-  //       sessionStorage.removeItem("uid");
-  //       sessionStorage.removeItem("isAdmin");
-  //     });
-
   onSubmit() {
     const data = {
       "text": {
@@ -55,9 +41,10 @@ export class AdminComponent implements OnInit {
       }
     };
 
-    const headers = new HttpHeaders({
-      'access-token': sessionStorage.getItem("token")
-    });
+    const token = sessionStorage.getItem("token");
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Authorization', token);
 
     this.http.post(`${environment.apiUrl}/api/create-text`, data, {headers: headers})
       .subscribe(res => {
