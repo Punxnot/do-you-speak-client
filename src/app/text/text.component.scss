@@ -1,0 +1,27 @@
+@import '../../assets/variables';
+
+.text-content {
+  padding: 20px;
+  background: $white;
+
+  .text-title {
+    margin-bottom: 10px;
+  }
+
+  .text-author {
+    font-weight: 100;
+    margin-bottom: 20px;
+  }
+
+  .text-body {
+    margin: 20px 0;
+  }
+}
+
+form {
+  margin-top: 10px;
+}
+
+audio {
+  max-width: 100%;
+}

@@ -1,36 +1,12 @@
 @import '../assets/variables';
 
 header {
-  height: $headerHeight;
-  padding: 0 20px;
-
-  a {
-    color: $white;
-    text-decoration: none;
-  }
+  margin-bottom: 10px;
+  padding: 20px 0;
 
   .logo {
-    font: 600 34px "Amatic SC";
+    font-family: 'Signika', sans-serif;
+    font-size: 40px;
     text-decoration: none;
-
-    &:hover {
-      color: #fee;
-      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
-      transition: all .3s;
-    }
-  }
-}
-
-.btn-logout {
-  margin-left: 10px;
-}
-
-nav a {
-  margin-left: 10px;
-
-  &.active {
-    color: $contrast-primary;
-    pointer-events: none;
-    cursor: default;
   }
 }

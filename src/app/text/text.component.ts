@@ -4,6 +4,7 @@ import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
+import { levelDisplayName } from './../../utils/utility-functions';
 
 @Component({
   selector: 'app-text',
@@ -16,6 +17,9 @@ export class TextComponent implements OnInit {
   textAuthor;
   textText;
   textAudio;
+  textLevel;
+  levelName;
+  isLoggedIn;
   uploadForm: FormGroup;
 
   constructor(private route:ActivatedRoute,
@@ -27,10 +31,14 @@ export class TextComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getText(id);
 
-    // If admin
-    this.uploadForm = this.formBuilder.group({
-      profile: ['']
-    });
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      this.isLoggedIn = true;
+
+      this.uploadForm = this.formBuilder.group({
+        profile: ['']
+      });
+    }
   }
 
   onFileSelect(event) {
@@ -59,6 +67,10 @@ export class TextComponent implements OnInit {
         this.textTitle = res['title'];
         this.textAuthor = res['author'];
         this.textText = res['text'];
+        this.textLevel = res['level'];
+
+        this.levelName = levelDisplayName(this.textLevel);
+
         if (res['audio_url']) {
           console.log(res['audio_url']);
           this.textAudio = `${environment.apiUrl}${res['audio_url']}`;

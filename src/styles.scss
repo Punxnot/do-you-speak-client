@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-// @import url(//fonts.googleapis.com/css?family=Vibur);
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 @import './assets/variables';
 
 body,
@@ -30,7 +30,31 @@ ul {
 
 body {
   background: $background-main;
-  color: $white;
+  font-family: 'Roboto', sans-serif;
+  color: $black;
+}
+
+a, a:active, a:hover {
+  color: $contrast-primary;
+  text-decoration: none;
+}
+
+nav {
+  margin-bottom: 10px;
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  span {
+    color: $black;
+    font-weight: 100;
+  }
+}
+
+.page-container {
+  min-height: 100vh;
+  padding: 0 40px;
 }
 
 input[type=text],
@@ -62,24 +86,20 @@ textarea {
   font-size: 14px;
 }
 
+.btns {
+  padding: 10px 0;
+}
+
 .btn {
-  background-color: transparent;
-  color: $contrast-primary;
-  border: 1px solid $contrast-primary;
+  background-color: $contrast-primary;
+  color: $white;
+  border: none;
+  outline: none;
   border-radius: 4px;
   cursor: pointer;
   line-height: 30px;
   font-size: 14px;
   padding: 0 10px;
-
-  &:hover {
-    background-color: $contrast-primary-hover;
-  }
-
-  &.warning {
-    color: $red;
-    border: 1px solid $red;
-  }
 
   & + .btn {
     margin-left: 20px;

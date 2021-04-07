@@ -1,3 +1,11 @@
-<div *ngFor="let text of texts">
-  <a [routerLink]="['/texts/', text.id]">{{text.title}}</a>
-</div>
+<nav>
+  <a routerLink="/">All levels</a>
+  <span> > </span>
+  <span>{{levelName}}</span>
+</nav>
+
+<ul class="level-texts-list">
+  <li *ngFor="let text of texts">
+    <a [routerLink]="['/texts/', text.id]">{{text.title}}</a>
+  </li>
+</ul>

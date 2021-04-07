@@ -1,19 +1,27 @@
-<div>{{textTitle}}</div>
-<div>{{textAuthor}}</div>
-<div>{{textText}}</div>
+<nav>
+  <a routerLink="/">All levels</a>
+  <span> > </span>
+  <a [routerLink] = "['/level' + textLevel]">{{levelName}}</a>
+  <span> > </span>
+  <span>{{textTitle}}</span>
+</nav>
 
-<audio controls *ngIf="textAudio">
-  <source [src]="textAudio" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
+<main class="text-content">
+  <h2 class="text-title">{{textTitle}}</h2>
+  <div class="text-author">By {{textAuthor}}</div>
+  <audio controls *ngIf="textAudio">
+    <source [src]="textAudio" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+  <div class="text-body">{{textText}}</div>
 
-<div>
-  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-    <div>
+  <div *ngIf="isLoggedIn">
+    <h4>Upload audio:</h4>
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
       <input type="file" name="profile" (change)="onFileSelect($event)" />
-    </div>
-    <div>
-      <button type="submit">Upload</button>
-    </div>
-  </form>
-</div>
+      <div class="btns">
+        <button type="submit" class="btn">Upload</button>
+      </div>
+    </form>
+  </div>
+</main>

@@ -1,1 +1,16 @@
+@import '../../assets/variables';
 
+.level-texts-list {
+  border: 1px solid $grey-light;
+  border-bottom: none;
+  background: $white;
+  a {
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 1px solid $grey-light;
+
+    &:hover {
+      background: $hover-color;
+    }
+  }
+}

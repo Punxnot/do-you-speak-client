@@ -1,26 +1,41 @@
 @import '../../assets/variables';
 
-main {
-  min-height: calc(100vh - #{$headerHeight});
+.homepage-card {
+  position: relative;
+  flex: 1 1 33.33%;
+  margin-right: 20px;
+  padding: 20px;
+  background: white;
+  box-shadow: 5px 5px 25px 0 rgb(46 61 73 / 20%);
+  border-radius: 6px;
+  border-top: 5px solid $contrast-primary;
+  font-size: 30px;
+  color: $contrast-primary;
+  text-align: center;
 
-  .column {
-    flex: 0 0 33.3%;
-    align-self: stretch;
-    padding: 20px;
-
-    .search-btn {
-      margin-top: 10px;
-      border-color: $contrast-secondary;
-      color: $contrast-secondary;
-    }
+  &::before {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 20px;
+    font-size: 64px;
+    font-weight: bold;
+    color: $grey-light;
   }
-}
 
-.age-numbers-container {
-  margin: 20px 0;
+  &:first-child::before {
+    content: '1';
+  }
 
-  p {
-    margin-top: 20px;
-    font-size: 20px;
+  &:nth-child(2)::before {
+    content: '2';
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    &::before {
+      content: '3';
+    }
   }
 }
