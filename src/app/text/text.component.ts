@@ -31,6 +31,7 @@ export class TextComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getText(id);
 
+    // TODO: Put this in Input
     const token = sessionStorage.getItem("token");
     if (token) {
       this.isLoggedIn = true;

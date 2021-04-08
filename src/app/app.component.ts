@@ -13,6 +13,7 @@ import { environment } from './../environments/environment';
 export class AppComponent {
   title = 'Do You Speak';
   loading = false;
+  isLoggedIn;
 
   constructor(private http: HttpClient) {
 
@@ -20,5 +21,9 @@ export class AppComponent {
 
   ngOnInit() {
     console.log("ngOnInit");
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      this.isLoggedIn = true;
+    }
   }
 }

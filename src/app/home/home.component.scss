@@ -8,10 +8,19 @@
   background: white;
   box-shadow: 5px 5px 25px 0 rgb(46 61 73 / 20%);
   border-radius: 6px;
-  border-top: 5px solid $contrast-primary;
+  border-top: 5px solid $grey-light;
   font-size: 30px;
   color: $contrast-primary;
   text-align: center;
+  transition: border-top-color .3s;
+
+  &:hover {
+    border-top-color: $contrast-primary;
+
+    &::before {
+      color: $contrast-primary;
+    }
+  }
 
   &::before {
     position: absolute;
@@ -21,6 +30,7 @@
     font-size: 64px;
     font-weight: bold;
     color: $grey-light;
+    transition: color .3s;
   }
 
   &:first-child::before {
