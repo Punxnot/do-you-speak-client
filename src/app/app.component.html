@@ -1,5 +1,5 @@
 <div class="page-container">
-  <div class="content" *ngIf="!loading">
+  <div *ngIf="!loading">
     <header class="flex-container">
       <a routerLink="/" class="logo">
         {{title}}
@@ -9,5 +9,7 @@
 
   <span class="content" *ngIf="loading">Loading...</span>
 
-  <router-outlet></router-outlet>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

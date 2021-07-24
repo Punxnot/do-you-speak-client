@@ -26,3 +26,26 @@ audio {
   max-width: 100%;
   width: 100%;
 }
+
+.text-edit-form {
+  padding: 10px;
+  background: $white;
+  color: $black;
+
+  input,
+  select,
+  textarea {
+    color: $black;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    resize: vertical;
+  }
+}

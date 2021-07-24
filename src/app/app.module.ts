@@ -14,11 +14,13 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { LevelComponent } from './level/level.component';
 import { TextComponent } from './text/text.component';
+import { EditTextComponent } from './text/edit-text.component';
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LogInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'texts/:id', component: TextComponent },
+  { path: 'edit/:id', component: EditTextComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'level1', component: LevelComponent, data: { levelNum: 1 } },
   { path: 'level2', component: LevelComponent, data: { levelNum: 2 } },
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     AdminComponent,
     HomeComponent,
     LevelComponent,
-    TextComponent
+    TextComponent,
+    EditTextComponent
   ],
   imports: [
     BrowserModule,

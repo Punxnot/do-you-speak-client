@@ -52,9 +52,12 @@ nav {
   }
 }
 
+.content {
+  padding: $main-space;
+}
+
 .page-container {
   min-height: 100vh;
-  padding: 0 40px;
 }
 
 input[type=text],

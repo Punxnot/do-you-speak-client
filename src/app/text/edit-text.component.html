@@ -1,0 +1,30 @@
+<div class="text-edit-form">
+  <form id="add-text-form" (ngSubmit)="onSubmit()">
+    <label>
+      Title
+      <input type="text" id="text-title" name="text-title" [(ngModel)]="textTitle" placeholder="Enter title" required>
+    </label>
+    <label>
+      Author
+      <input type="text" id="text-author" name="text-author" [(ngModel)]="textAuthor" placeholder="Enter author">
+    </label>
+    <label>
+      Level
+      <select name="text-level" id="text-level" [(ngModel)]="textLevel">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </label>
+    <label>
+      Duration (in minutes)
+      <input type="number" min="0" id="text-duration" name="text-duration" [(ngModel)]="textDuration" placeholder="Enter duration">
+    </label>
+    <label>
+      Text
+      <textarea id="text-body" name="text-body" rows="8"
+                [(ngModel)]="textBody" placeholder="Enter text" required></textarea>
+    </label>
+    <button type="submit" class="btn">Save</button>
+  </form>
+</div>
