@@ -1,25 +1,29 @@
 @import '../../assets/variables';
 
 .text-content {
-  padding: 20px;
+  padding: $space-md;
   background: $white;
 
   .text-title {
-    margin-bottom: 10px;
+    margin-bottom: $space-sm;
   }
 
   .text-author {
     font-weight: 100;
-    margin-bottom: 20px;
+    margin-bottom: $space-md;
   }
 
   .text-body {
-    margin: 20px 0;
+    margin: $space-md 0;
+
+    p {
+      margin-bottom: $space-md;
+    }
   }
 }
 
 form {
-  margin-top: 10px;
+  margin-top: $space-sm;
 }
 
 audio {
@@ -28,7 +32,7 @@ audio {
 }
 
 .text-edit-form {
-  padding: 10px;
+  padding: $space-sm;
   background: $white;
   color: $black;
 
@@ -40,7 +44,7 @@ audio {
 
   label {
     display: block;
-    margin: 10px 0;
+    margin: $space-sm 0;
   }
 
   textarea {

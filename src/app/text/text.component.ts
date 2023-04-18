@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
@@ -9,7 +9,8 @@ import { levelDisplayName } from './../../utils/utility-functions';
 @Component({
   selector: 'app-text',
   templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss']
+  styleUrls: ['./text.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class TextComponent implements OnInit {

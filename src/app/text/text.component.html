@@ -13,7 +13,7 @@
     <source [src]="textAudio" type="audio/mpeg">
   Your browser does not support the audio element.
   </audio>
-  <div class="text-body">{{textText}}</div>
+  <div class="text-body" [innerHTML]="textText"></div>
 
   <div *ngIf="isLoggedIn">
     <h4>Upload audio:</h4>

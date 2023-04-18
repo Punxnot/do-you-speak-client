@@ -22,8 +22,25 @@
     </label>
     <label>
       Text
-      <textarea id="text-body" name="text-body" rows="8"
-                [(ngModel)]="textBody" placeholder="Enter text" required></textarea>
+      <editor
+         id="text-body"
+         [(apiKey)]="tinyApiKey"
+         name="text-body"
+         [(ngModel)]="textBody"
+         placeholder="Enter text" required
+         [init]="{
+           height: 500,
+           menubar: false,
+           branding: false,
+           plugins: [
+             'advlist lists wordcount'
+           ],
+           toolbar:
+             'undo redo | formatselect | bold italic backcolor | \
+             alignleft aligncenter alignright alignjustify | \
+             bullist numlist outdent indent | removeformat'
+         }"
+      ></editor>
     </label>
     <button type="submit" class="btn">Save</button>
   </form>

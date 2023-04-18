@@ -19,6 +19,7 @@ export class EditTextComponent implements OnInit {
   textLevel = 1;
   textDuration;
   textId;
+  tinyApiKey = environment.tinyKey;
 
   constructor(private route:ActivatedRoute,
               private http: HttpClient,
@@ -32,6 +33,7 @@ export class EditTextComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this);
     const data = {
       "id": this.textId,
       "text": {
